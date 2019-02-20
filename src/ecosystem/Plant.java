@@ -1,8 +1,10 @@
 package ecosystem;
 
+import map.Position;
+
 public abstract class Plant extends Creature {
 
-    public Plant(final int x, final int y, final char sign) {
-        super(x, y, sign);
+    public Plant(final Position position, final char sign) {
+        super(position, sign);
     }
 }

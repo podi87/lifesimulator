@@ -1,10 +1,11 @@
 package ecosystem.animals;
 
 import ecosystem.Animal;
+import map.Position;
 
 public class Chicken extends Animal {
 
-    public Chicken(final int x, final int y) {
-        super(x, y, 'C');
+    public Chicken(final Position position) {
+        super(position, 'C');
     }
 }

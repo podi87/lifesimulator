@@ -1,25 +1,19 @@
 package ecosystem;
 
+import map.Position;
+
 public abstract class Creature {
-    private int x;
-    private int y;
+
+    private Position position;
 
     private char sign;
 
-    public int getX() {
-        return x;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setX(final int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(final int y) {
-        this.y = y;
+    public void setPosition(final Position position) {
+        this.position = position;
     }
 
     public char getSign() {
@@ -30,9 +24,8 @@ public abstract class Creature {
         this.sign = sign;
     }
 
-    public Creature(final int x, final int y, final char sign) {
-        this.x = x;
-        this.y = y;
+    public Creature(final Position position, final char sign) {
+        this.position = position;
         this.sign = sign;
     }
 }

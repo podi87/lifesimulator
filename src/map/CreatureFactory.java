@@ -22,11 +22,11 @@ public class CreatureFactory {
         int randomInt = new Random().nextInt(CREATURE_BOUND);
         switch (randomInt) {
             case 0:
-                return new Tree(x, y);
+                return new Tree(new Position(x,y));
             case 1:
-                return new Chicken(x, y);
+                return new Chicken(new Position(x,y));
             case 2:
-                return new Dog(x, y);
+                return new Dog(new Position(x,y));
             default:
                 return null;
         }

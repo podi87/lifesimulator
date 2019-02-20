@@ -1,13 +1,14 @@
 package ecosystem;
 
+import map.Position;
+
 public abstract class Animal extends Creature  {
 
-    protected void moveTo(int x, int y) {
-        this.setX(x);
-        this.setY(y);
+    public void moveTo(Position position) {
+        this.setPosition(position);
     }
 
-    public Animal(final int x, final int y, final char sign) {
-        super(x, y, sign);
+    public Animal(final Position position, final char sign) {
+        super(position, sign);
     }
 }

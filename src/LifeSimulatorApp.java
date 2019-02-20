@@ -1,11 +1,10 @@
-import map.MapService;
+import simulator.SimulatorService;
 
 public class LifeSimulatorApp {
 
     public static void main(String[] args) {
-        MapService ms = MapService.getInstance();
-        ms.initMap(8,8);
-        ms.fillMap();
-        ms.drawMap();
+        SimulatorService ss = new SimulatorService();
+        ss.init(8,8);
+        ss.simulate();
     }
 }

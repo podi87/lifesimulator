@@ -1,10 +1,11 @@
 package ecosystem.plants;
 
 import ecosystem.Plant;
+import map.Position;
 
 public class Tree extends Plant {
 
-    public Tree(final int x, final int y) {
-        super(x, y, 'T');
+    public Tree(final Position position) {
+        super(position, 'T');
     }
 }
