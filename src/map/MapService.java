@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import ecosystem.Animal;
 import ecosystem.Creature;
+import ecosystem.Position;
 
-public class MapService {
+class MapService {
 
     private static final MapService INSTANCE = new MapService();
 
-    public static MapService getInstance() {
+    static MapService getInstance() {
         return INSTANCE;
     }
 
@@ -22,15 +24,19 @@ public class MapService {
 
     private List<Position> freePositions = new ArrayList<>();
 
-    public void initMap(final int heigth, final int width) {
+    private List<Animal> animals = new ArrayList<>();
+
+    void initMap(final int heigth, final int width) {
         map = new Creature[heigth][width];
     }
 
-    public void fillMap() {
+    void fillMap() {
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 if (RANDOM.nextBoolean()) {
-                    map[row][col] = cf.getRandomCreature(row, col);
+                    Creature randomCreature = cf.getRandomCreature(row, col);
+                    map[row][col] = randomCreature;
+                    if (randomCreature instanceof Animal) animals.add((Animal) randomCreature);
                 } else {
                     freePositions.add(new Position(row, col));
                 }
@@ -38,7 +44,7 @@ public class MapService {
         }
     }
 
-    public void drawMap() {
+    void drawMap() {
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++) {
                 Creature creature = map[row][col];
@@ -48,7 +54,18 @@ public class MapService {
         }
     }
 
-    public Position swapToRandomFreePosition(final Position pos) {
+    void moveAnimals() {
+        for (Animal animal : animals) {
+            map[animal.getPosition().getX()][animal.getPosition().getY()] = null;
+            animal.moveTo(swapToRandomFreePosition(animal.getPosition()));
+            map[animal.getPosition().getX()][animal.getPosition().getY()] = animal;
+        }
+        drawMap();
+        System.out.println();
+    }
+
+    Position swapToRandomFreePosition(final Position pos) {
+        if (freePositions.size() == 0) return pos;
         Position position = freePositions.get(RANDOM.nextInt(freePositions.size()));
         swapPositions(pos, position);
         return position;
@@ -62,7 +79,8 @@ public class MapService {
     private MapService() {
     }
 
-    public Creature[][] getMap() {
+    Creature[][] getMap() {
         return map;
     }
+
 }

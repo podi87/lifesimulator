@@ -1,9 +1,11 @@
 package ecosystem.animals;
 
-import ecosystem.Animal;
-import map.Position;
+import java.io.Serializable;
 
-public class Chicken extends Animal {
+import ecosystem.Animal;
+import ecosystem.Position;
+
+public class Chicken extends Animal implements Serializable {
 
     public Chicken(final Position position) {
         super(position, 'C');

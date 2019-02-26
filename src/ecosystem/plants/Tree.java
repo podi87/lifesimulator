@@ -1,9 +1,11 @@
 package ecosystem.plants;
 
-import ecosystem.Plant;
-import map.Position;
+import java.io.Serializable;
 
-public class Tree extends Plant {
+import ecosystem.Plant;
+import ecosystem.Position;
+
+public class Tree extends Plant implements Serializable {
 
     public Tree(final Position position) {
         super(position, 'T');

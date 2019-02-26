@@ -1,4 +1,4 @@
-package map;
+package ecosystem;
 
 public class Position {
      private int x;

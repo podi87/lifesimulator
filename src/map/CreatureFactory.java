@@ -3,6 +3,7 @@ package map;
 import java.util.Random;
 
 import ecosystem.Creature;
+import ecosystem.Position;
 import ecosystem.animals.Chicken;
 import ecosystem.animals.Dog;
 import ecosystem.plants.Tree;
